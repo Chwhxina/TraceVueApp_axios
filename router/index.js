@@ -2,9 +2,12 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import {getStore,setStore} from '@/config/mUtils'
 
+
 Vue.use(Router)
 
 const login = r => require.ensure([], () => r(require('@/page/login')), 'login');
+const login_factory = r => require.ensure([], () => r(require('@/page/login_factory')), 'factory');
+const login_gov = r => require.ensure([], () => r(require('@/page/login_gov')), 'login_gov');
 const dashboard = r => require.ensure([], () => r(require('@/page/dashboard')), 'dashboard');
 const home = r => require.ensure([], () => r(require('@/page/home')), 'home');
 const attributeList = r => require.ensure([], () => r(require('@/page/attributeList')), 'attributeList');
@@ -24,6 +27,14 @@ const routes = [
 		path: '/',
 		component: login
 	},
+    {
+        path: '/login_factory',
+        component: login_factory
+    },
+    {
+        path: '/login_gov',
+        component: login_gov
+    },
 	{
 		path: '/home',
 		component: home,
@@ -96,6 +107,6 @@ router.beforeEach((to, from, next) => {
       next();
     }
   }
-}); 
+});
 
 export default router;

@@ -2,11 +2,17 @@
   	<div class="login_page fillcontain">
 	  	<transition name="form-fade" mode="in-out">
 	  		<section class="form_contianer" v-show="showLogin">
-		  		<div class="manage_tip">
-		  			<p>武大蚂蚁链食品朔源系统</p>
-		  		</div>
+                <div class="manage_tip" style="opacity: initial">
+                    <p>武大蚂蚁链食品朔源系统</p>
+                </div>
+                <el-row :gutter="5">
+                    <el-col :span="12" type="flex" ><div class="grid-content bg-purple-dark">用户</div></el-col>
+                    <el-col :span="6" type="flex"><router-link to="/login_factory"><div class="grid-content bg-purple">工厂</div></router-link></el-col>
+                    <el-col :span="6" type="flex"><router-link to="/login_gov"><div class="grid-content bg-purple">政府</div></router-link></el-col>
+                </el-row>
+
 		    	<el-form :model="loginForm" :rules="rules" ref="loginForm">
-					<el-form-item prop="username">
+					<el-form-item prop="username"  >
 						<el-input v-model="loginForm.username" placeholder="用户名"><span>dsfsf</span></el-input>
 					</el-form-item>
 					<el-form-item prop="password">
@@ -16,8 +22,6 @@
 				    	<el-button type="primary" @click="submitForm('loginForm')" class="submit_btn">登陆</el-button>
 				  	</el-form-item>
 				</el-form>
-				<p class="tip">温馨提示：</p>
-				<p class="tip">本系统仅为武大蚂蚁链教学专用，请勿用于其他场景。</p>
 	  		</section>
 	  	</transition>
   	</div>
@@ -91,7 +95,7 @@
 <style lang="less" scoped>
 	@import '../style/mixin';
 	.login_page{
-		background-color: #324057;
+        background-image: url("../assets/img/background.jpeg");
 	}
 	.manage_tip{
 		position: absolute;
@@ -104,16 +108,17 @@
 		}
 	}
 	.form_contianer{
-		.wh(350px, 210px);
-		.ctp(350px, 210px);
+		.wh(350px, 220px);
+		.ctp(-500px, 220px);
 		padding: 25px;
 		border-radius: 5px;
 		text-align: center;
-		background-color: #fff;
+		background-color: #dee0e0;
 		.submit_btn{
 			width: 100%;
 			font-size: 16px;
 		}
+        //opacity: 30%;
 	}
 	.tip{
 		font-size: 12px;
@@ -126,4 +131,20 @@
 	  	transform: translate3d(0, -50px, 0);
 	  	opacity: 0;
 	}
+    .el-col {
+        border-radius: 4px;
+    }
+    .bg-purple-dark {
+        background: #99a9bf;
+    }
+    .bg-purple {
+        background: #d3dce6;
+    }
+    .bg-purple-light {
+        background: #e5e9f2;
+    }
+    .grid-content {
+        border-radius: 4px;
+        min-height: 36px;
+    }
 </style>
